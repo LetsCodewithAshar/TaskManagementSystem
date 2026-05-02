@@ -23,6 +23,11 @@ app.use(
   })
 );
 
+// health check
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
 // api routes
 app.use("/api/auth", authRoutes);
 app.use("/api/projects", projectRoutes);
